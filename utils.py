@@ -1,11 +1,8 @@
 import json
 import sqlite3
-
-
 def _list_film(result):
     """Функция принимает значения базы данных и выдает структурированный список"""
     list_film = []
-
     for i in range(len(result)):
         dictionary_film = {}
         dictionary_film["title"] = result[i - 1][0]
@@ -114,7 +111,9 @@ def search_by_rating(rating):
     else:
         return f'Данные не корректны'
 
+
 def search_by_genre(genre):
+    """Функция поиска по жанру."""
     con = sqlite3.connect("netflix.db")
     cur = con.cursor()
     sqlite_query = f"""SELECT `title`,
@@ -133,6 +132,7 @@ def search_by_genre(genre):
         dictionary_film["description"] = result[i - 1][1]
         new_list.append(dictionary_film)
     con.close()
-    jsonStr = json.dumps(new_list)
-    return jsonStr
+    json_str = json.dumps(new_list)
+    return json_str
+
 

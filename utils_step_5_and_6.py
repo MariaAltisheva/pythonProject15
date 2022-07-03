@@ -1,8 +1,9 @@
 import sqlite3
 import json
 
+
 def two_actor(actor_1, actor_2):
-    """Функция получает двух актеров и выводит список тех, кто играт с ними в паре более двух раз"""
+    """Функция получает двух актеров и выводит список тех, кто играт с ними в паре более двух раз""" # noqa E501
     con = sqlite3.connect("netflix.db")
     cur = con.cursor()
     sqlite_query = f"""SELECT `cast` FROM netflix 
@@ -24,8 +25,14 @@ def two_actor(actor_1, actor_2):
 
     return super_finish_list
 
+
 def for_step_6(type, year, genre):
-    """С помощью данной функции можно задать параметры тип, год и жарнр, а получить список картин с описаниями"""
+
+    """
+    С помощью данной функции можно задать параметры тип,
+    год и жанр, а получить список картин с описаниями
+    """
+
     con = sqlite3.connect("netflix.db")
     cur = con.cursor()
     sqlite_query = f"""SELECT `title`, `description` FROM netflix 
